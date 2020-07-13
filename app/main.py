@@ -10,10 +10,17 @@ app = FastAPI(docs_url="/events_docs/", redoc_url=None)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-@app.get("/items/{id}")
-async def read_item(request: Request, id: str):
-    return templates.TemplateResponse("item.html", {"request": request, "id": id})
 
+@app.get("/testmenu/")
+async def test_menu(request: Request):
+
+    import random
+    seed = "abcdefghijklmnopqrstuvwxyz0123456789"
+    ary = list(seed)
+    fake_jwt = ""
+    for loop in range(100):
+        fake_jwt += random.choice(ary)
+    return templates.TemplateResponse("test_page.html", {"request": request, "jwt": fake_jwt})
 
 @app.on_event("startup")
 async def startup():
