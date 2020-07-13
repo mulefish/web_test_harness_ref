@@ -13,6 +13,7 @@ async def create_event(payload: EventIn):
     event_id = await simple_controller.receive_do_something_and_return(payload)
     response = {
         'id': event_id,
+        'finch':'wren',
         **payload.dict()
     }
 

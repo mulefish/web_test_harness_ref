@@ -11,6 +11,7 @@ class EventOut(EventIn):
     name: str
     start_time: str
     end_time: str
+    finch: str
 
 class EventUpdate(EventIn):
     name: str
